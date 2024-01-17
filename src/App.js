@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const ColorSquares = () => {
+    const [square1Color, setSquare1Color] = useState('red')
+    const [square2Color, setSquare2Color] = useState('blue')
+
+    const handleSquareClick = (squareNumber) => {
+        if (squareNumber === 1) {
+            setSquare1Color(square2Color)
+            setSquare2Color(square1Color)
+        } else if (squareNumber === 2) {
+            setSquare1Color(square2Color)
+            setSquare2Color(square1Color)
+        }
+    };
+
+    return (
+        <div>
+            <div
+                style={{ width: '160px', height: '130px', backgroundColor: square1Color, cursor: 'pointer' }}
+                onClick={() => handleSquareClick(1)}
+            ></div>
+            <div
+                style={{ width: '160px', height: '130px', backgroundColor: square2Color, cursor: 'pointer' }}
+                onClick={() => handleSquareClick(2)}
+            ></div>
+        </div>
+    )
 }
 
-export default App;
+export default ColorSquares
